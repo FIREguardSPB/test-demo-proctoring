@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://FIREguard:Ant_260671520032@cluster0.hdd44.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://FIREguard:**********@cluster0.hdd44.mongodb.net/<dbname>?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
 
