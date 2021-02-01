@@ -25,7 +25,7 @@ module.exports.token = async function (req, res) {
 //report controller api
 module.exports.report = async function (req, res) {
 
-    if (req.header('x-api-key') === 'secret')
+    if (req.header('X-api-key') === 'secret')
         //записываем результат репорта в базу пользователя в поле result
         try {
             await User.findOneAndUpdate({ _id: req.body.id.substr(0, 24) }, {result: req.body })
