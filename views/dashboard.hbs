@@ -35,8 +35,18 @@
             voluptates.
         </div>
         <br><br>
-        {{#if resultReport}}
-            Данные прошлого тестирования: {{resultReport}} <br><br>
+         {{#if idSession}}
+            Данные прошедшего тестирования: <br><br>
+            <hr>
+            ID сессии: {{idSession}}<br>
+            status: {{statusTest}}<br>
+            Начало тестирования: {{beginTest}}<br>
+            Окончание тестирования: {{endTest}}<br>
+            Ссылка на отчет: <a href="{{linkResult}}">{{linkResult}}</a><br>
+            Заключение о тестировании: {{conclusionTest}}<br>
+            <hr>
+
+            <br><br>
 
         {{else}} Данные о тестированиях отсутствуют
 

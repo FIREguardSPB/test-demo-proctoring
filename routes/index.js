@@ -50,17 +50,31 @@ router
         }
     });
 
-router.get("/dashboard", async (req, res) => {
-    const {user} = req.session;
-    if (req.session.user) {
-        const resultReport = await User.findOne({_id: user._id})
-        let result = null
-resultReport.result ? result = resultReport.result.id : null;
-        res.render("dashboard", {name: user.username, resultReport: result});
-    } else {
-        res.redirect("/login");
-    }
-});
+    router.get("/dashboard", async (req, res) => {
+      const {user} = req.session;
+      if (req.session.user) {
+          const resultReport = await User.findOne({_id: user._id})
+  
+  if (resultReport.result) {
+      res.render("dashboard", {
+          name: user.username,
+          idSession: resultReport.result.id,
+          statusTest: resultReport.result.status,
+          beginTest: `${resultReport.result.startedAt.substring(0, 10)}  ${resultReport.result.startedAt.substring(11, 19)}`,
+          endTest: `${resultReport.result.stoppedAt.substring(0, 10)}  ${resultReport.result.stoppedAt.substring(11, 19)}`,
+          linkResult: resultReport.result.link,
+          conclusionTest: resultReport.result.conclusion
+      });
+  } else {
+      res.render("dashboard", {name: user.username})
+  }
+  
+      }
+  
+      else {
+          res.redirect("/login");
+      }
+  });
 
 router.get("/logout", async (req, res, next) => {
     if (req.session.user) {
